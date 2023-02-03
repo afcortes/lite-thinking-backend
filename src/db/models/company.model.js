@@ -31,9 +31,7 @@ const CompanySchema = {
 
 class Company extends Model {
   static associate(models) {
-    this.hasMany(models.Product, {
-        foreignKey: 'company_NIT'
-    });
+    this.hasMany(models.Product, {as: 'products'});
   }
 
   static config(sequelize) {

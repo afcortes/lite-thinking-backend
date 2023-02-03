@@ -11,12 +11,12 @@ class CompanyService {
   }
 
   async find() {
-    const Companys = await models.Company.findAll();
+    const Companys = await models.Company.findAll({include: 'products'});
     return Companys;
   }
 
   async findOne(NIT) {
-    const Company = await models.Company.findByPk(NIT);
+    const Company = await models.Company.findByPk(NIT, {include: 'products'});
     if (!Company) {
       throw boom.notFound('Company not found');
     }

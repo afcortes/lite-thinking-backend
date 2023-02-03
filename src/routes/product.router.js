@@ -8,7 +8,7 @@ const { getCompanySchema } = require('./../schemas/company.schema')
 const router = express.Router();
 const service = new ProductService();
 
-router.get('/company/:NIT',
+router.get('/general/:NIT',
   validatorHandler(getCompanySchema, 'params'),
   async (req, res, next) => {
     try {
@@ -21,7 +21,7 @@ router.get('/company/:NIT',
   }
 );
 
-router.get('/:id',
+router.get('/specific/:id',
   validatorHandler(getProductSchema, 'params'),
   async (req, res, next) => {
     try {
@@ -34,14 +34,12 @@ router.get('/:id',
   }
 );
 
-router.post('/:NIT',
-  validatorHandler(getCompanySchema, 'params'),
+router.post('/',
   validatorHandler(createProductSchema, 'body'),
   async (req, res, next) => {
     try {
-      const { NIT } = req.params;
       const body = req.body;
-      const newProduct = await service.create(body, NIT);
+      const newProduct = await service.create(body);
       res.json(newProduct);
     } catch (error) {
       next(error);

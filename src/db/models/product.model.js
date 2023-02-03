@@ -33,7 +33,7 @@ const ProductSchema = {
       field: 'created_at',
       defaultValue: Sequelize.NOW,
   },
-  companyNIT: {
+  CompanyNIT: {
     field: 'company_NIT',
     allowNull: false,
     type: DataTypes.STRING,
@@ -49,9 +49,7 @@ const ProductSchema = {
 class Product extends Model {
 
   static associate(models) {
-    this.belongsTo(models.Company, {
-        as: 'company_NIT'
-    });
+    this.belongsTo(models.Company);
   }
 
   static config(sequelize) {

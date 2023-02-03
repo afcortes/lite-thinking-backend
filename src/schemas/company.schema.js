@@ -13,7 +13,6 @@ const createCompanySchema = Joi.object({
 });
 
 const updateCompanySchema = Joi.object({
-  NIT,
   name,
   address,
   phoneNumber

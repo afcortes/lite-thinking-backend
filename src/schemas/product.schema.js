@@ -20,7 +20,6 @@ const updateProductSchema = Joi.object({
   price,
   description,
   image,
-  companyNIT,
 });
 
 const getProductSchema = Joi.object({

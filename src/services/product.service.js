@@ -5,14 +5,19 @@ const { models } = require('./../libs/sequelize');
 class ProductService {
   constructor() {}
 
-  async create(data, companyNIT) {
+  async create(data) {
+
+    const { companyNIT } = data;
+
     const company = await models.Company.findByPk(companyNIT);
 
     if (!company) {
       throw boom.notFound('Company not found');
     }
 
-    const newProduct = await models.Product.create(data, {include: 'company_NIT'});
+    const productData = {...data, CompanyNIT: companyNIT};
+
+    const newProduct = await models.Product.create(productData);
 
     return newProduct;
   }
@@ -20,7 +25,7 @@ class ProductService {
   async find(companyNIT) {
     const Products = await models.Product.findAll({
       where: {
-        companyNIT: companyNIT
+        CompanyNIT: companyNIT
       }
     });
     return Products;

@@ -25,12 +25,18 @@ class CompanyService {
 
   async update(NIT, changes) {
     const Company = await this.findOne(NIT);
+    if (!Company) {
+      throw boom.notFound('Company not found');
+    }
     const response = await Company.update(changes);
     return response;
   }
 
   async delete(NIT) {
     const Company = await this.findOne(NIT);
+    if (!Company) {
+      throw boom.notFound('Company not found');
+    }
     await Company.destroy();
     return { NIT };
   }

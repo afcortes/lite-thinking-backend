@@ -23,10 +23,6 @@ const ProductSchema = {
       allowNull: false,
       type: DataTypes.TEXT,
   },
-  image: {
-      allowNull: false,
-      type: DataTypes.STRING,
-  },
   createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
@@ -35,14 +31,13 @@ const ProductSchema = {
   },
   CompanyNIT: {
     field: 'company_NIT',
-    allowNull: false,
     type: DataTypes.STRING,
     references: {
         model: COMPANY_TABLE,
         key: 'NIT',
     },
     onUpdate: 'CASCADE',
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
 },
 }
 

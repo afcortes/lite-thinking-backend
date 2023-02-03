@@ -63,7 +63,7 @@ router.delete('/:NIT',
     try {
       const { NIT } = req.params;
       await service.delete(NIT);
-      res.status(201).json({NIT});
+      res.json({NIT});
     } catch (error) {
       next(error);
     }

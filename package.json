@@ -8,7 +8,7 @@
     "start": "node index.js",
     "lint": "eslint",
     "migration:generate": "sequelize-cli migration:generate --name",
-    "migration:run": "sequelize-cli db:migrate",
+    "migration:run": "sequelize-cli db:migrate --debug",
     "migration:revert": "sequelize-cli db:migrate:undo",
     "migration:delete": "sequelize-cli db:migrate:undo:all"
   },
@@ -25,11 +25,13 @@
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "joi": "^17.4.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql2": "^2.3.3",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",

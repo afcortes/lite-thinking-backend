@@ -21,7 +21,7 @@ const UserSchema = {
   role: {
     allowNull: false,
     type: DataTypes.STRING,
-    defaultValue: 'customer',
+    defaultValue: 'admin',
   },
   createdAt: {
     allowNull: false,
@@ -32,13 +32,6 @@ const UserSchema = {
 }
 
 class User extends Model {
-  static associate(model) {
-    this.hasOne(model.Customer, {
-      as: 'customer',
-      foreignKey: 'userId'
-    });
-  }
-
   static config(sequelize) {
     return {
       sequelize,

@@ -50,7 +50,7 @@ class Product extends Model {
 
   static associate(models) {
     this.belongsTo(models.Company, {
-        as: 'company'
+        as: 'company_NIT'
     });
   }
 

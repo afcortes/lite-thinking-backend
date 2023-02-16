@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <style>
+        .title {
+            text-align: center;
+        }
+        .fixed_headers {
+          table-layout: fixed;
+          border-collapse: collapse;
+        }
+        .fixed_headers th {
+          text-decoration: underline;
+        }
+        .fixed_headers th,
+        .fixed_headers td {
+          padding: 5px;
+          text-align: left;
+        }
+        .fixed_headers thead {
+          background-color: #333;
+          color: #fdfdfd;
+        }
+        .fixed_headers thead tr {
+          display: block;
+          position: relative;
+        }
+        .fixed_headers tbody {
+          display: block;
+          overflow: auto;
+          width: 100%;
+        }
+        .fixed_headers tbody tr:nth-child(even) {
+          background-color: #ddd;
+        }
+        .old_ie_wrapper tbody {
+          height: auto;
+        }
+        .table-container {
+          display: grid;
+          place-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">Inventory</h1>
+    <section class="table-container">
+      <table class="fixed_headers">
+        <thead>
+          <th>
+            name
+          </th>
+          <th>
+            price
+          </th>
+          <th>
+            description
+          </th>
+        </thead>
+        <tbody>
+          {{data}}
+        </tbody>
+      </table>
+    </section>
+</body>
+
+</html>

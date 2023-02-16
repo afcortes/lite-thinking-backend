@@ -70,5 +70,19 @@ router.delete('/:NIT',
   }
 );
 
+router.get('/generatePDF/:NIT',
+  validatorHandler(getCompanySchema, 'params'),
+  async (req, res, next) => {
+    try {
+      const { NIT } = req.params;
+      const pdf = await service.downloadPDF(NIT);
+      res.contentType('application/pdf');
+      pdf.pipe(res)
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 module.exports = router;
 

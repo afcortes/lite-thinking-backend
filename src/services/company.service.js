@@ -2,7 +2,15 @@ const boom = require('@hapi/boom');
 
 const { models } = require('./../libs/sequelize');
 
+const initializeNodemailer = require('./../libs/nodemailer');
+const nodemailer = initializeNodemailer();
+
+const FileService = require('./file.service');
+const fileService = new FileService();
+
 class CompanyService {
+
+
   constructor() {}
 
   async create(data) {
@@ -40,6 +48,13 @@ class CompanyService {
     await Company.destroy();
     return { NIT };
   }
+
+  async downloadPDF(NIT) {
+    const company = await this.findOne(NIT);
+    const pdf = await fileService.createPdfFromTable(company.products);
+    return pdf;
+  }
+
 }
 
 module.exports = CompanyService;
